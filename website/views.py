@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 
 
-def test(request):
-    return HttpResponse('<h1>Hi Amir Hossein</h1>')
+def Home_view(request):
+    return HttpResponse('<h1>Home</h1>')
 
 
-def json(request):
-    return JsonResponse({'name': 'Amir Hossein'})
+def Contact_view(request):
+    return HttpResponse('<h1>Contact</h1>')
+
+
+def About_us_view(request):
+    return HttpResponse('<h1>About us</h1>')
