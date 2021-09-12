@@ -22,3 +22,7 @@ def Contact_view(request):
 
 def About_us_view(request):
     return render(request, 'website/about.html')
+
+
+def Elements_view(request):
+    return render(request, 'website/elements.html')
