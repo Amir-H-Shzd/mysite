@@ -17,6 +17,11 @@ class Post(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(null=True)
 
+    # order items in general with Meta class not just showing in admin panel
+    # and using class PostAdmin(admin.ModelAdmin):ordering = ['created_date'] in admin.py
+    class Meta:
+        ordering = ['-created_date']
+
     # change post name from id to title
     def __str__(self):
         return "{} - {}" .format(self.id, self.title)
