@@ -24,4 +24,4 @@ class Post(models.Model):
 
     # change post name from id to title
     def __str__(self):
-        return "{} - {}" .format(self.id, self.name)
+        return "{} - {}" .format(self.id, self.title)
