@@ -20,7 +20,7 @@ class Post(models.Model):
     # order items in general with Meta class not just showing in admin panel
     # and using class PostAdmin(admin.ModelAdmin):ordering = ['created_date'] in admin.py
     class Meta:
-        ordering = ['-created_date']
+        ordering = ['-published_date']
 
     # change post name from id to title
     def __str__(self):
