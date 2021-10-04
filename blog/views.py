@@ -14,13 +14,13 @@ def blog_view(request):
     return render(request, 'blog/blog-home.html', context)
 
 
-def single_view(request):
+def single_view(request, pid):
+    post = get_object_or_404(Post, id=pid)
     # post = Post.objects.get(id=pid)
-    # post = get_object_or_404(Post)
     # posts.views = posts.views + 1
     # posts.save()
-    # context = {'post': post}
-    return render(request, 'blog/blog-single.html')
+    context = {'post': post}
+    return render(request, 'blog/blog-single.html', context)
 
 
 def test(request, pid):
