@@ -13,10 +13,25 @@ def blog_view(request):
 def single_view(request, pid):
     # post = Post.objects.get(id=pid)
     post = get_object_or_404(Post, id=pid)
-    post.views = post.views + 1
-    post.save()
     context = {'post': post}
-    return render(request, 'blog/blog-single.html', context)
+
+    # count viewer by reloading (first not compelete model)
+    # post.views = post.views + 1
+    #     post.save()
+
+    # count each specific user but cant view new post only read one post
+    # if not request.session.get('counted'):
+    #     post.views = post.views + 1
+    #     post.save()
+    #     context = {'post': post}
+    #     request.session['counted'] = True
+
+    # this views structure count specific viewer of each post
+    if (request.session.get(str(post.id), False) == False):
+        request.session[str(post.id)] = True
+        post.views += 1
+        post.save()
+    return render(request, 'blog/blog-single.html', context=context)
 
 
 def test(request, pid):
