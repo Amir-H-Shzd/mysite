@@ -4,8 +4,8 @@ from django.utils import timezone
 
 
 def blog_view(request):
-    # posts = Post.objects.filter(status=1)
     posts = Post.objects.filter(published_date__lte=timezone.now())
+    posts = Post.objects.filter(status=1)
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
@@ -13,6 +13,7 @@ def blog_view(request):
 def single_view(request, pid):
     # post = Post.objects.get(id=pid)
     post = get_object_or_404(Post, id=pid)
+    posts = Post.objects.filter(status=1)
     context = {'post': post}
 
     # count viewer by reloading (first not compelete model)
@@ -35,7 +36,6 @@ def single_view(request, pid):
 
 
 def test(request, pid):
-    #post = Post.objects.get(id=pid)
     post = get_object_or_404(Post, id=pid)
     context = {'post': post}
     return render(request, 'test.html', context)
