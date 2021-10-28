@@ -6,7 +6,8 @@ from django.db.models.deletion import SET_NULL
 
 
 class Post(models.Model):
-    # image
+    image = models.ImageField(
+        upload_to='blog/%Y/%m/', default='blog/default.jpg')
     author = models.ForeignKey(User, on_delete=SET_NULL, null=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
