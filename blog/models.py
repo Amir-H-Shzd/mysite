@@ -5,6 +5,13 @@ from django.db.models.deletion import SET_NULL
 # Create your models here.
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     image = models.ImageField(
         upload_to='blog/%Y/%m/', default='blog/default.jpg')
@@ -12,7 +19,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     # tag
-    # category
+    category = models.ManyToManyField(Category)
     views = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)

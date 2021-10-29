@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post
+from blog.models import Post, Category
 # Register your models here.
 
 # admin.site.register(Post)  || another method for register post to admin panel
@@ -14,3 +14,12 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('status', 'author')
     # ordering = ['created_date']
     search_fields = ['title', 'content']
+
+# this is a method like in above foe registering new table Category
+
+# @admin.register(Category)
+# class CaregoryAdmin(admin.ModelAdmin):
+#     pass
+
+
+admin.site.register(Category)
