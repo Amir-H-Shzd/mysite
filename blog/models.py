@@ -34,3 +34,7 @@ class Post(models.Model):
     # change post name from id to title
     def __str__(self):
         return "{} - {}" .format(self.id, self.title)
+
+    # a method to truncate content in blog-home template and you should be call {{post.snippets}} instead of {{post.content}} in blog-home
+    # def snippets(self):
+    #     return self.content[:100] + "..."
