@@ -13,8 +13,15 @@ def blog_view(request):
 def single_view(request, pid):
     posts = Post.objects.filter(status=1)
     post = get_object_or_404(posts, id=pid)
-    context = {'post': post}
 
+    nextPost = Post.objects.filter(
+        published_date__gt=post.published_date).order_by('published_date').first()
+    prevPost = Post.objects.filter(
+        published_date__lt=post.published_date).order_by('published_date').last()
+
+    # context = {'post': post}
+
+    
     # count viewer by reloading (first not compelete model)
     # post.views = post.views + 1
     #     post.save()
@@ -31,7 +38,7 @@ def single_view(request, pid):
         request.session[str(post.id)] = True
         post.views += 1
         post.save()
-    return render(request, 'blog/blog-single.html', context=context)
+    return render(request, 'blog/blog-single.html',  {'post': post, 'nextpost': nextPost, 'prevpost': prevPost})
 
 
 def test(request, pid):
