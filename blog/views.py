@@ -21,7 +21,6 @@ def single_view(request, pid):
 
     # context = {'post': post}
 
-    
     # count viewer by reloading (first not compelete model)
     # post.views = post.views + 1
     #     post.save()
@@ -41,8 +40,8 @@ def single_view(request, pid):
     return render(request, 'blog/blog-single.html',  {'post': post, 'nextpost': nextPost, 'prevpost': prevPost})
 
 
-def test(request, pid):
+def test(request):
     # post = Post.objects.get(status=1)
-    post = get_object_or_404(Post, id=pid)
-    context = {'post': post}
-    return render(request, 'test.html', context)
+    # post = get_object_or_404(Post, id=pid)
+    # context = {'post': post}
+    return render(request, 'test.html')
