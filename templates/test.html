@@ -12,16 +12,16 @@
 
 <body>
 
-    hello <br>number of posts is: {% function as totalpost %}
+    hello <br>title of posts are: {% function as totalpost %}
 
-    {% for post in totalpost %}
-    <p>{{post.content|snippet}}</p>
-    <!-- {% if not forloop.last %},{% endif %} -->
+    <!-- {% for post in totalpost %}
+    <p>{{post.title}}</p>
 
-    {% endfor %}
 
-    <hr>
-    {% plus 6 %}
+    {% endfor %} -->
+
+    {% popularposts %}
+
 </body>
 
 </html>
